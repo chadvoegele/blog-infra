@@ -12,12 +12,11 @@
     "format": "eslint lib bin test --fix --ext ts"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "2.68.0",
     "@types/jest": "^29.5.12",
     "@types/node": "22.5.0",
     "@typescript-eslint/eslint-plugin": "^8.2.0",
     "@typescript-eslint/parser": "^8.2.0",
-    "aws-cdk": "2.154.1",
+    "aws-cdk": "^2.1125.0",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -30,7 +29,7 @@
     "typescript": "~5.5.4"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.0.0",
+    "aws-cdk-lib": "^2.257.0",
     "npm-check-updates": "^17.1.0",
     "source-map-support": "^0.5.21"
   }

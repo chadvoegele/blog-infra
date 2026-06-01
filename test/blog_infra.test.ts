@@ -1,4 +1,4 @@
-import { expect as expectCDK, countResources } from '@aws-cdk/assert'
+import { Template } from 'aws-cdk-lib/assertions'
 import * as cdk from 'aws-cdk-lib'
 import * as BlogInfra from '../lib/blog_infra-stack'
 
@@ -9,11 +9,13 @@ test('Stack', () => {
   }
   const app = new cdk.App({ context })
   const stack = new BlogInfra.BlogInfraStack(app, 'MyTestStack')
-  expectCDK(stack).to(countResources('AWS::IAM::Role', 2))
-  expectCDK(stack).to(countResources('AWS::S3::Bucket', 1))
-  expectCDK(stack).to(countResources('AWS::S3::BucketPolicy', 1))
-  expectCDK(stack).to(countResources('AWS::CloudFront::CloudFrontOriginAccessIdentity', 1))
-  expectCDK(stack).to(countResources('AWS::IAM::Policy', 1))
-  expectCDK(stack).to(countResources('AWS::CloudFront::Distribution', 1))
-  expectCDK(stack).to(countResources('AWS::Route53::RecordSet', 1))
+  const template = Template.fromStack(stack)
+
+  template.resourceCountIs('AWS::IAM::Role', 2)
+  template.resourceCountIs('AWS::S3::Bucket', 1)
+  template.resourceCountIs('AWS::S3::BucketPolicy', 1)
+  template.resourceCountIs('AWS::CloudFront::CloudFrontOriginAccessIdentity', 1)
+  template.resourceCountIs('AWS::IAM::Policy', 1)
+  template.resourceCountIs('AWS::CloudFront::Distribution', 1)
+  template.resourceCountIs('AWS::Route53::RecordSet', 1)
 })
